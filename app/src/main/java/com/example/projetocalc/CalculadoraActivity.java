@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,14 +16,17 @@ public class CalculadoraActivity extends AppCompatActivity {
     double valor1 = 0, valor2 = 0;
     String operador = "";
 
+    TextView operacao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculadora); // mesmo nome do XML
+        setContentView(R.layout.activity_calculadora);
 
         caixaResultado = findViewById(R.id.caixaResultado);
 
-        // Botões numéricos
+        operacao = findViewById(R.id.operacao);
+
         setNumero(R.id.btn0, "0");
         setNumero(R.id.btn1, "1");
         setNumero(R.id.btn2, "2");
@@ -34,17 +38,17 @@ public class CalculadoraActivity extends AppCompatActivity {
         setNumero(R.id.btn8, "8");
         setNumero(R.id.btn9, "9");
 
-        // Botões de operação
+
         setOperador(R.id.btnAdicao, "+");
         setOperador(R.id.btnSubtracao, "-");
         setOperador(R.id.btnMultiplicar, "*");
         setOperador(R.id.btnDividir, "/");
 
-        // Botão resultado
+
         Button btnResultado = findViewById(R.id.btnResultado);
         btnResultado.setOnClickListener(view -> calcularResultado());
 
-        // Botão limpar
+
         Button btnLimpar = findViewById(R.id.btnLimpar);
         btnLimpar.setOnClickListener(view -> {
             caixaResultado.setText("");
@@ -69,6 +73,7 @@ public class CalculadoraActivity extends AppCompatActivity {
                 valor1 = Double.parseDouble(caixaResultado.getText().toString());
                 operador = op;
                 caixaResultado.setText("");
+                operacao.setText(op);
             } catch (NumberFormatException e) {
                 caixaResultado.setText("Erro");
             }
