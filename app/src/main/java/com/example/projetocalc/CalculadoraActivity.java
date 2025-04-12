@@ -16,7 +16,7 @@ public class CalculadoraActivity extends AppCompatActivity {
     double valor1 = 0, valor2 = 0;
     String operador = "";
 
-    TextView operacao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class CalculadoraActivity extends AppCompatActivity {
 
         caixaResultado = findViewById(R.id.caixaResultado);
 
-        operacao = findViewById(R.id.operacao);
+
 
         setNumero(R.id.btn0, "0");
         setNumero(R.id.btn1, "1");
@@ -73,7 +73,7 @@ public class CalculadoraActivity extends AppCompatActivity {
                 valor1 = Double.parseDouble(caixaResultado.getText().toString());
                 operador = op;
                 caixaResultado.setText("");
-                operacao.setText(op);
+
             } catch (NumberFormatException e) {
                 caixaResultado.setText("Erro");
             }
